@@ -3,7 +3,7 @@ server:
 
 # config for mongodb
 mongo:
-  db: ${MONGO_DB:customer}
+  db: ${MONGO_DB:customerDB}
   url: ${MONGO_URL:localhost:27017}
   user: ${MONGO_USER:data}
   passwd: ${MONGO_PASSWD:data2024}
