@@ -24,7 +24,7 @@ public class CustomerResponse {
   private String lastname;
   private String phone;
   private String email;
-  private String customerType;
+  private CustomerType customerType;
   private String documentType;
   private String cardNumber;
   private String startDate;
