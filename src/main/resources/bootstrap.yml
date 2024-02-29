@@ -1,6 +1,7 @@
 server:
   port: 8081
-
+bam:
+  url: ${BAM_LOCATION_URL:http://localhost:8084/bank-account}
 # config for mongodb
 mongo:
   db: ${MONGO_DB:customerDB}
