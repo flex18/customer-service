@@ -41,6 +41,7 @@ public class CustomerService implements CustomerInterface {
           customerUpdate.setEmail(request.getEmail());
           customerUpdate.setCustomerType(request.getCustomerType());
           customerUpdate.setDocumentType(request.getDocumentType());
+          customerUpdate.setIdentificationNumber(request.getIdentificationNumber());
           customerUpdate.setCardNumber(request.getCardNumber());
           return customerRepository.save(customerUpdate);
         });
