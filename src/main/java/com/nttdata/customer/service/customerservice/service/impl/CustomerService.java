@@ -5,10 +5,12 @@ import com.nttdata.customer.service.customerservice.entity.CustomerResponse;
 import com.nttdata.customer.service.customerservice.repository.CustomerRepository;
 import com.nttdata.customer.service.customerservice.service.inter.CustomerInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Primary
 @Service
 public class CustomerService implements CustomerInterface {
 
