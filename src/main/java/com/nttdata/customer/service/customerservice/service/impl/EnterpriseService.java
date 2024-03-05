@@ -1,10 +1,14 @@
 package com.nttdata.customer.service.customerservice.service.impl;
 
+import com.nttdata.customer.service.customerservice.configuration.http.BAMProperties;
+import com.nttdata.customer.service.customerservice.entity.bam.EnterpriseBankAccount;
 import com.nttdata.customer.service.customerservice.entity.enterprise.EnterpriseCustomer;
 import com.nttdata.customer.service.customerservice.repository.EnterpriseCustomerRepository;
 import com.nttdata.customer.service.customerservice.service.inter.EnterpriseCInterface;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -13,6 +17,12 @@ public class EnterpriseService implements EnterpriseCInterface {
 
   @Autowired
   EnterpriseCustomerRepository enterpriseCustomerRepository;
+
+  @Autowired
+  BAMProperties bamProperties;
+
+  @Autowired
+  RestTemplate restTemplate;
 
   @Override
   public Mono<EnterpriseCustomer> create(EnterpriseCustomer request) {
@@ -50,4 +60,11 @@ public class EnterpriseService implements EnterpriseCInterface {
   public Mono<Void> delete(String id) {
     return enterpriseCustomerRepository.deleteById(id);
   }
+
+  public Mono<EnterpriseBankAccount> enterpriseBankAccount(String clientId, EnterpriseBankAccount enterpriseBankAccount) {
+    String url = bamProperties.getUrl();
+    enterpriseBankAccount.setCustomerId(clientId);
+    return Mono.just(Objects.requireNonNull(restTemplate.postForObject(url, enterpriseBankAccount, EnterpriseBankAccount.class)));
+  }
+
 }
