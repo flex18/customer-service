@@ -19,5 +19,6 @@ public class CustomerRequest {
   private String email;
   private CustomerType customerType;
   private String documentType;
+  private String identificationNumber;
   private String cardNumber;
 }

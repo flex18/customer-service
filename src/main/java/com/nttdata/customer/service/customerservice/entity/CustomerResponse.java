@@ -26,6 +26,7 @@ public class CustomerResponse {
   private String email;
   private CustomerType customerType;
   private String documentType;
+  private String identificationNumber;
   private String cardNumber;
   private String startDate;
 
@@ -37,6 +38,7 @@ public class CustomerResponse {
     email = create.getEmail();
     customerType = create.getCustomerType();
     documentType = create.getDocumentType();
+    identificationNumber = create.getIdentificationNumber();
     cardNumber = create.getCardNumber();
     startDate = new DateTime().toDateTimeISO().toString();
   }
