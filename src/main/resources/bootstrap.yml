@@ -1,5 +1,23 @@
 server:
   port: 8081
+spring:
+  application:
+    name: customer-management-ms
+  cloud:
+    config:
+      label: ${BRANCH_GIT:master}
+      name: customer-management-ms
+      discovery:
+        service-id: config_server
+        enabled: true
+      fail-fast: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:${EUREKA_PORT:8761}/eureka}
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
 bam:
   url: ${BAM_LOCATION_URL:http://localhost:8084/bank-account}
 # config for mongodb
