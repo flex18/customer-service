@@ -6,6 +6,7 @@ import com.nttdata.customer.service.customerservice.entity.enterprise.Enterprise
 import com.nttdata.customer.service.customerservice.repository.EnterpriseCustomerRepository;
 import com.nttdata.customer.service.customerservice.service.inter.EnterpriseCInterface;
 import java.util.Objects;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -36,7 +37,10 @@ public class EnterpriseService implements EnterpriseCInterface {
 
   @Override
   public Mono<EnterpriseCustomer> getById(String id) {
-    return enterpriseCustomerRepository.findById(id);
+    Optional<EnterpriseCustomer> optionalEnterpriseCustomer = Optional
+        .ofNullable(enterpriseCustomerRepository.findById(id).block());
+    return optionalEnterpriseCustomer.map(Mono::just).orElseGet(Mono::empty);
+
   }
 
   @Override

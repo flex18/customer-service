@@ -4,6 +4,7 @@ import com.nttdata.customer.service.customerservice.entity.CustomerRequest;
 import com.nttdata.customer.service.customerservice.entity.CustomerResponse;
 import com.nttdata.customer.service.customerservice.repository.CustomerRepository;
 import com.nttdata.customer.service.customerservice.service.inter.CustomerInterface;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,9 @@ public class CustomerService implements CustomerInterface {
 
   @Override
   public Mono<CustomerResponse> getById(String id) {
-    return customerRepository.findById(id);
+    Optional<CustomerResponse> optionalCustomer = Optional
+        .ofNullable(customerRepository.findById(id).block());
+    return optionalCustomer.map(Mono::just).orElseGet(Mono::empty);
   }
 
   @Override
