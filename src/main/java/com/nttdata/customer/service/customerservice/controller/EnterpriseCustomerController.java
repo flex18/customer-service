@@ -49,7 +49,10 @@ public class EnterpriseCustomerController {
 
   @PostMapping("/{clientId}/enterprise-bank-account")
   public Mono<EnterpriseBankAccount> openEnterpriseBankAccount(@PathVariable String clientId, @RequestBody EnterpriseBankAccount request){
-    return enterpriseService.enterpriseBankAccount(clientId, request);
+    return enterpriseService.openEnterpriseBankAccount(clientId, request);
   }
-
+  @GetMapping("/show-bank-account/{clientId}")
+  public Mono<EnterpriseBankAccount> showEnterpriseBankAccount(@PathVariable String clientId){
+    return enterpriseService.showEnterpriseBankAccount(clientId);
+  }
 }

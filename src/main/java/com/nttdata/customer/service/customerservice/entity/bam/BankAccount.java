@@ -17,6 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BankAccount {
 
+  private String accountId;
   private String accountType; // Ahorro, corriente, plazo fijo.
   private String customerId;
   private BigDecimal amount;

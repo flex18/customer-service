@@ -7,12 +7,14 @@ import com.nttdata.customer.service.customerservice.repository.EnterpriseCustome
 import com.nttdata.customer.service.customerservice.service.inter.EnterpriseCInterface;
 import java.util.Objects;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Service
 public class EnterpriseService implements EnterpriseCInterface {
 
@@ -65,10 +67,22 @@ public class EnterpriseService implements EnterpriseCInterface {
     return enterpriseCustomerRepository.deleteById(id);
   }
 
-  public Mono<EnterpriseBankAccount> enterpriseBankAccount(String clientId, EnterpriseBankAccount enterpriseBankAccount) {
+  public Mono<EnterpriseBankAccount> openEnterpriseBankAccount(String clientId, EnterpriseBankAccount enterpriseBankAccount) {
     String url = bamProperties.getUrl();
     enterpriseBankAccount.setCustomerId(clientId);
     return Mono.just(Objects.requireNonNull(restTemplate.postForObject(url, enterpriseBankAccount, EnterpriseBankAccount.class)));
+  }
+
+  public Mono<EnterpriseBankAccount> showEnterpriseBankAccount(String clientId){
+    String url = bamProperties.getUrl() + "/" + clientId;
+    log.info("*** The url for get enterprise bank account is: " + url);
+    try {
+      EnterpriseBankAccount enterpriseBankAccount = restTemplate.getForObject(url, EnterpriseBankAccount.class);
+      return Mono.justOrEmpty(enterpriseBankAccount);
+    } catch (Exception e) {
+      log.error("Error while fetching enterprise bank account: " + e.getMessage());
+      return Mono.error(e);
+    }
   }
 
 }
