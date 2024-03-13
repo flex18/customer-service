@@ -4,6 +4,7 @@ import com.nttdata.customer.service.customerservice.entity.CustomerRequest;
 import com.nttdata.customer.service.customerservice.entity.CustomerResponse;
 import com.nttdata.customer.service.customerservice.entity.bam.BankAccount;
 import com.nttdata.customer.service.customerservice.service.impl.CustomerService;
+import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -64,7 +65,13 @@ public class CustomerController {
   }
 
   @GetMapping("/show-bank-account/{accountId}")
-  public Mono<BankAccount> showBankAccount(@PathVariable String accountId){
+  public Mono<BankAccount> showBankAccount(@PathVariable String accountId) throws InterruptedException {
+    if (accountId.equals("10")){
+      throw new IllegalStateException("bank account not found");
+    }
+    if (accountId.equals("7")){
+      TimeUnit.SECONDS.sleep(5L);
+    }
     return customerService.showBankAccount(accountId);
   }
 }
