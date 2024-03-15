@@ -1,7 +1,6 @@
 package com.nttdata.customer.service.customerservice.entity.enterprise;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.nttdata.customer.service.customerservice.entity.CustomerType;
 import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -26,7 +25,7 @@ public class EnterpriseCustomer implements Serializable {
   private String rucNumber;
   private String phone;
   private String email;
-  private CustomerType customerType;
+  private EnterpriseCustomerType customerType;
   private String cardNumber;
   private List<Person> headlines;
   private List<Person> authorizedSignatories;
