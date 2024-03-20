@@ -21,4 +21,5 @@ public class BankAccount {
   private String accountType; // Ahorro, corriente, plazo fijo.
   private String customerId;
   private BigDecimal amount;
+  private String cellPhoneNumber;
 }

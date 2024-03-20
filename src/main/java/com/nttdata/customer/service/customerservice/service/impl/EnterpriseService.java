@@ -52,7 +52,6 @@ public class EnterpriseService implements EnterpriseCInterface {
           enterpriseCUpdate.setBusinessName(request.getBusinessName());
           enterpriseCUpdate.setDocumentType(request.getDocumentType());
           enterpriseCUpdate.setRucNumber(request.getRucNumber());
-          enterpriseCUpdate.setPhone(request.getPhone());
           enterpriseCUpdate.setEmail(request.getEmail());
           enterpriseCUpdate.setCustomerType(request.getCustomerType());
           enterpriseCUpdate.setCardNumber(request.getCardNumber());

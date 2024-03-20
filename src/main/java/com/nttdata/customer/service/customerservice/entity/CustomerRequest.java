@@ -15,7 +15,6 @@ public class CustomerRequest {
 
   private String name;
   private String lastname;
-  private String phone;
   private String email;
   private CustomerType customerType;
   private String documentType;

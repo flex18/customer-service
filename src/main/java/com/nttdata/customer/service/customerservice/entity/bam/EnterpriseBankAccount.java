@@ -18,4 +18,5 @@ public class EnterpriseBankAccount {
   private EnterpriseAccountType accountType; //corriente
   private String customerId;
   private BigDecimal amount;
+  private String cellPhoneNumber;
 }

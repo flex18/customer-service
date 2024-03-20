@@ -22,7 +22,6 @@ public class CustomerResponse {
   private String id;
   private String name;
   private String lastname;
-  private String phone;
   private String email;
   private CustomerType customerType;
   private String documentType;
@@ -34,7 +33,6 @@ public class CustomerResponse {
     id = UUID.randomUUID().toString();
     name = create.getName();
     lastname = create.getLastname();
-    phone = create.getPhone();
     email = create.getEmail();
     customerType = create.getCustomerType();
     documentType = create.getDocumentType();

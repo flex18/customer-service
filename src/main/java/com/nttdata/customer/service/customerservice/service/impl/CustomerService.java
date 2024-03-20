@@ -54,7 +54,6 @@ public class CustomerService implements CustomerInterface {
         .flatMap(customerUpdate -> {
           customerUpdate.setName(request.getName());
           customerUpdate.setLastname(request.getLastname());
-          customerUpdate.setPhone(request.getPhone());
           customerUpdate.setEmail(request.getEmail());
           customerUpdate.setCustomerType(request.getCustomerType());
           customerUpdate.setDocumentType(request.getDocumentType());

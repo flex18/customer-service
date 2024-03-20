@@ -23,7 +23,6 @@ public class EnterpriseCustomer implements Serializable {
   private String businessName;
   private String documentType;
   private String rucNumber;
-  private String phone;
   private String email;
   private EnterpriseCustomerType customerType;
   private String cardNumber;
